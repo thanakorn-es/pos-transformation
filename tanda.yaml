@@ -1,0 +1,427 @@
+swagger: "2.0"
+info:
+  title: "Tanda API"
+  description: "API description in Markdown."
+  version: "1.5.0"
+host: my.tanda.co
+basePath: /api/v2
+schemes:
+- "https"
+paths:
+  /locations:
+    get:
+      operationId: "GetLocations"
+      summary: "Get a list of locations"
+      description: "Get a list of locations"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+          examples:
+            application/json:
+              - id: 1111
+                name: "Springfield"
+                short_name: "S"
+                latitude: -27.459687
+                longitude: 153.032108
+                address: "Springfield Powerplant Reactors"
+                time_zone: "Australia/Brisbane"
+                public_holiday_regions:
+                  - "au"
+                  - "au_qld"
+                specific_holiday_dates:
+                  - date: "2016-08-08"
+                    from: 8
+                    to: 17
+                business_day_cutoff: 5
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        description: "The key being used to authorize API call"
+    post:
+      operationId: "CreateLocation"
+      summary: "Create a location"
+      description: "Create a location"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /locations/{id}:
+    put:
+      operationId: "Updatelocation"
+      summary: "Update location information"
+      description: "Update location information"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+      - name: "id"
+        required: true
+        in: "path"
+        type: "integer"
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /departments:
+    get:
+      operationId: "GetDepartments"
+      summary: "Get a list of departments"
+      description: "Get a list of departments"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+    post:
+      operationId: "CreateDepartment"
+      summary: "Create a location"
+      description: "Create a location"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /departments/{id}:
+    put:
+      operationId: "UpdateDepartment"
+      summary: "Update department's information"
+      description: "Update department's information"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+      - name: "id"
+        in: "path"
+        type: "integer"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+    delete:
+      operationId: "DeleteDepartment"
+      summary: "Delete specific department"
+      description: "Delete specific department"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+      - name: "id"
+        in: "path"
+        type: "integer"
+        required: true
+  /users:
+    get:
+      operationId: "GetUsers"
+      summary: "Get a list of users"
+      description: "Get a list of users"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+    post:
+      operationId: "CreateUser"
+      summary: "Create a user"
+      description: "Create a user"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /users/{id}:
+    put:
+      operationId: "UpdateUser"
+      summary: "Update user's information"
+      description: "Update user's information"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+      - name: "id"
+        in: "path"
+        type: "integer"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+    delete:
+      operationId: "DeleteUser"
+      summary: "Delete specific user"
+      description: "Delete specific user"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+      - name: "id"
+        in: "path"
+        type: "integer"
+        required: true
+  /datastreams:
+    post:
+      operationId: "CreateDataStream"
+      summary: "Create a datastream"
+      description: "Create a datastream"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /datastreamjoins:
+    post:
+      operationId: "CreateDataStreamJoin"
+      summary: "Create a datastreamjoin"
+      description: "Create a datastreamjoin"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /storestats/for_datastream:
+    post:
+      operationId: "CreateStoreStatistics"
+      summary: "Submit Store Statistics"
+      description: "Submit Store Statistics"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - in: path
+        name: id
+        type: number
+        description: The datastream_id for being a container.
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /clockins:
+    post:
+      operationId: "ClockInOut"
+      summary: "Submit Clock in/out"
+      description: "Submit Clock in/out"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+  /schedules:
+    get:
+      operationId: "GetSchedule"
+      summary: "Get specific schedule"
+      description: "Get specific schedule"
+      consumes: 
+        - application/json
+      produces: 
+        - application/json
+      parameters:
+        - name: "Authorization"
+          in: "header"
+          type: "string"
+          required: true
+        - in: query
+          name: users_ids
+          type: integer
+          description: 'User ID'
+        - in: query
+          name: from
+          type: string
+          description: ''
+        - in: query
+          name: to
+          type: string
+          description: ''
+      responses:
+        200:
+          description: OK
+  /rosters/current:
+    get:
+      operationId: "GetCurrentRoster"
+      summary: "Get a currnet roster"
+      description: "Get a currnet roster"
+      consumes: 
+        - application/json
+      produces: 
+        - application/json
+      parameters:
+        - name: "Authorization"
+          in: "header"
+          type: "string"
+          required: true
+      responses:
+        200:
+          description: OK
+  /shifts:
+    get:
+      operationId: "GetShifts"
+      summary: "Get shifts"
+      description: "Get shifts"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Authorization"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "from"
+        in: "query"
+        type: "string"
+      - name: "to"
+        in: "query"
+        type: "string"
+      - name: "show_costs"
+        in: "query"
+        type: "string"
+      - name: "user_ids"
+        in: "query"
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+          

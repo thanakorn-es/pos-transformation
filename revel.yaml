@@ -1,0 +1,239 @@
+---
+swagger: "2.0"
+info:
+  title: "Revel API"
+  description: "API description in Markdown."
+  version: "1.5.0"
+host: "pz-th-prd.revelup.com"
+basePath: "/"
+schemes:
+- "https"
+paths:
+  /enterprise/Establishment/:
+    get:
+      operationId: "GetEstablishments"
+      summary: "Get a list of Establishments"
+      description: "Get a list of Establishments"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+  /resources/Address/:
+    get:
+      operationId: "GetAddresses"
+      summary: "Get a list of Addresses"
+      description: "Get a list of Addresses"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+  /resources/EmployeeRoleEstablishment/:
+    get:
+      operationId: "GetEmployments"
+      summary: "Get all employment information"
+      description: "Get all employment information"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+  /resources/Role/:
+    get:
+      operationId: "GetRoles"
+      summary: "Get a list of Roles"
+      description: "Get a list of Roles"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+  /resources/Employee/:
+    get:
+      operationId: "GetEmployees"
+      summary: "Get a list of Employees"
+      description: "Get a list of Employees"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+  /resources/TimeSheetEntry/:
+    get:
+      operationId: "GetTimeSheets"
+      summary: "Get employee's timesheets"
+      description: "Get employee's timesheets"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+      - name: "employee"
+        in: "query"
+        type: "integer"
+      - name: "establishment"
+        in: "query"
+        type: "integer"
+      - name: "created_date"
+        in: "query"
+        type: "string"
+      - name: "updated_date__gte"
+        in: "query"
+        type: "string"
+      - name: "clock_in"
+        in: "query"
+        type: "string"
+      - name: "clock_out"
+        in: "query"
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+  /reports/hourly_sales/json/:
+    get:
+      operationId: "GetLiveData"
+      summary: "Get Live Sales and Order"
+      description: "Get Live Sales and Order"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+      - name: "establishment"
+        in: "query"
+        type: "integer"
+      - name: "range_from"
+        in: "query"
+        type: "string"
+      - name: "range_to"
+        in: "query"
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+  /resources/AdjustedForecastedSalesResource/:
+    get:
+      operationId: "GetForecastData"
+      summary: "Get Forecast Data"
+      description: "Get Forecast Data"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "limit"
+        in: "query"
+        type: "integer"
+      - name: "establishment"
+        in: "query"
+        type: "integer"
+      - name: "date_from"
+        in: "query"
+        type: "string"
+      - name: "date_to"
+        in: "query"
+        type: "string"
+      responses:
+        200:
+          description: "OK"
+  /resources/TimeSchedule/:
+    delete:
+      operationId: "DeleteSchedule"
+      summary: "Delete a schedule for specific establishment"
+      description: "Delete a schedule for specific establishment"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "establishment"
+        in: "query"
+        type: "integer"
+    post:
+      operationId: "CreateSchedule"
+      summary: "Create a schedule"
+      description: "Create a schedule"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
