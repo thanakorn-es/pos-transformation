@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   title: "Revel API"
   description: "API description in Markdown."
-  version: "1.5.0"
+  version: "1.6.0"
 host: "pz-th-prd.revelup.com"
 basePath: "/"
 schemes:
@@ -99,6 +99,28 @@ paths:
       - name: "limit"
         in: "query"
         type: "integer"
+    post:
+      operationId: "CreateEmployee"
+      summary: "Create an employee"
+      description: "Create an employee"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
   /resources/TimeSheetEntry/:
     get:
       operationId: "GetTimeSheets"
