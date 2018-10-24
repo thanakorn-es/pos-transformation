@@ -85,6 +85,28 @@ paths:
         schema:
           type: "object"
         description: "body_data"
+    put:
+      operationId: "UpdateEmployment"
+      summary: "Update Employment"
+      description: "Update Employment"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
   /resources/Role/:
     get:
       operationId: "GetRoles"
@@ -125,6 +147,28 @@ paths:
       operationId: "CreateEmployee"
       summary: "Create an employee"
       description: "Create an employee"
+      responses:
+        200:
+          description: "The operation was successful."
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "API-AUTHENTICATION"
+        in: "header"
+        type: "string"
+        required: true
+      - name: "body"
+        required: true
+        in: "body"
+        schema:
+          type: "object"
+        description: "body_data"
+    put:
+      operationId: "UpdateEmployee"
+      summary: "Update an employee"
+      description: "Update an employee"
       responses:
         200:
           description: "The operation was successful."
